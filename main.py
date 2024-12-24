@@ -40,7 +40,7 @@ async def github_webhook(request: Request):
     commit_hash = payload.get("after", "unknown")
 
     message = {
-      "content": f"{commit_message}\n{commit_hash} @ [/{repository_name}](<https://github.com/{repository_path}>)",
+      "content": f"{commit_message}\n[{commit_hash[:6]}](<https://github.com/{repository_path}/commit/{commit_hash}>) @ [/{repository_name}](<https://github.com/{repository_path}>)",
       "username": sender_name,
       "avatar_url": sender_avatar
     }
